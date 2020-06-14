@@ -4,6 +4,7 @@ import * as React from 'react';
 import ProductBasic from './src/Components/prodBasics'
 import Camera from './src/Components/camera'
 import Category from './src/Components/Category'
+import Feature from './src/Components/Feature'
 const Stack = createStackNavigator();
 
 const MyStack = () => {
@@ -13,6 +14,7 @@ const MyStack = () => {
       <Stack.Screen options={{headerShown: false}}  name="Product Basic" component={ProductBasic} />
       <Stack.Screen  name="Product Image" component={Camera} />
       <Stack.Screen  name="Category" component={Category} />
+      <Stack.Screen  name="Feature" component={Feature} />
     </Stack.Navigator>
   );
 };  

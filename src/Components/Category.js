@@ -97,7 +97,7 @@ class Category extends React.Component {
 
         <TouchableOpacity
           onPress={() => {
-            this.props.navigation.navigate('Product Image');
+            this.props.navigation.navigate('Feature');
           }}>
           <View
             style={{
