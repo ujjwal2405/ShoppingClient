@@ -7,9 +7,8 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  TextInput
 } from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
-import RNPickerSelect from 'react-native-picker-select';
 
 
 class Feature extends React.Component {
@@ -62,14 +61,6 @@ class Feature extends React.Component {
             }}>
             <Text style={{color: 'white'}}>Next Page</Text>
           </View>
-          <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
-            ]}
-        />
         </TouchableOpacity>
        
       </SafeAreaView>

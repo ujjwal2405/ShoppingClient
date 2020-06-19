@@ -7,109 +7,100 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-  TextInput
+  TextInput,
 } from 'react-native';
-import {ColorPicker, TriangleColorPicker} from 'react-native-color-picker';
 import {Picker} from '@react-native-community/picker';
+import RNPickerSelect from 'react-native-picker-select';
 class Variant extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      size: 'S',
+      Color: '',
+      Size:'',
+      Quantity:0
     };
   }
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1,backgroundColor:"white"}}>
-        <View style={{marginTop:40,flexDirection:"row"}}>
-          <Text style={{fontSize:25,marginLeft:20,marginTop:50}}>Color</Text>
-          {/* <TriangleColorPicker
-            onColorSelected={color => console.warn(`Color selected: ${color}`)}
-            style={{height: 150, width: 150,marginTop:25,marginLeft:50}}
-          /> */}
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{marginTop: 40, flexDirection: 'row'}}>
+          <Text style={{fontSize: 25, marginLeft: 20}}>Color</Text>
 
-<Picker
-            selectedValue={this.state.product}
-            style={{height:100, width: 50,marginTop:-70,marginLeft:60}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({size: itemValue})
-            }>
-            <Picker.Item label="S" value="S" />
-            <Picker.Item label="M" value="Medium" />
-          </Picker>
-
-
-        </View>
-        {/* <View style={{width:"100%",height:4,backgroundColor:"grey",marginTop:15}}/> */}
-
-        <View style={{marginTop:40,flexDirection:"row"}}>
-          <Text style={{fontSize:25,marginLeft:20,marginTop:20}}>Size</Text>
-          <Picker
-            selectedValue={this.state.product}
-            style={{height:100, width: 50,marginTop:-70,marginLeft:60}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({size: itemValue})
-            }>
-            <Picker.Item label="S" value="Small" />
-            <Picker.Item label="M" value="Medium" />
-          </Picker>
-
+          <View
+            style={{
+              marginLeft: 30,
+              marginTop: 5,
+              borderColor: 'grey',
+              borderWidth: 1,
+              padding: 8,
+              width: 200,
+            }}>
+            <RNPickerSelect
+              onValueChange={value => {
+                this.setState({
+                  Color:value
+                })
+              }}
+              items={[
+                {label: 'Black', value: 'Black'},
+                {label: 'Blue', value: 'Blue'},
+                {label: 'Red', value: 'Red'},
+              ]}
+            />
+          </View>
         </View>
 
-        <View style={{marginTop:70,flexDirection:"row"}}>
-          <Text style={{fontSize:25,marginLeft:20,marginTop:10}}>Quantity</Text>
+        <View style={{marginTop: 40, flexDirection: 'row'}}>
+          <Text style={{fontSize: 25, marginLeft: 20}}>Size</Text>
+
+          <View
+            style={{
+              marginLeft: 44,
+              marginTop: 5,
+              borderColor: 'grey',
+              borderWidth: 1,
+              padding: 8,
+              width: 200,
+            }}>
+            <RNPickerSelect
+              onValueChange={value => {
+                this.setState({
+                  Size:value
+                })
+              }}
+              items={[
+                {label: 'Small', value: 'Small'},
+                {label: 'Medium', value: 'Medium'},
+                {label: 'Large', value: 'Large'},
+              ]}
+            />
+          </View>
+        </View>
+
+        <View style={{marginTop: 40, flexDirection: 'row'}}>
+          <Text style={{fontSize: 25, marginLeft: 20, marginTop: 10}}>Qty</Text>
           <View
             style={{
               marginLeft: 20,
               marginTop: 15,
               borderColor: 'grey',
               borderWidth: 1,
-              width: '50%',
+              width: 200,
               justifyContent: 'center',
-              padding:10
+              padding: 10,
+              marginLeft: 50,
             }}>
             <TextInput
               style={{paddingHorizontal: 25}}
               autoCapitalize="none"
               placeholder="Quantity"
-              //   onChangeText={txt => this.setState({username: txt})}
+               onChangeText={txt => this.setState({Quantity: txt})}
             />
           </View>
-
         </View>
-
-        {/* <View style={{marginTop:70,flexDirection:"row"}}>
-          <Text style={{fontSize:25,marginLeft:20,marginTop:10,textAlign:"justify"}}>Add Variant</Text>
-          <View
-            style={{
-              marginLeft: 20,
-              marginTop: 15,
-              borderColor: 'grey',
-              borderWidth: 1,
-              width: '50%',
-              justifyContent: 'center',
-            }}>
-            <TextInput
-              style={{paddingHorizontal: 25}}
-              autoCapitalize="none"
-              placeholder="Quantity"
-              //   onChangeText={txt => this.setState({username: txt})}
-            />
-          </View>
-
-        </View> */}
-
-        
-        
-        
-        {/* <View style={{width:"100%",height:4,backgroundColor:"grey",marginTop:15}}/> */}
-      
-      
       </SafeAreaView>
     );
   }
 }
 export default Variant;
-
-

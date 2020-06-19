@@ -15,7 +15,10 @@ class Category extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: 'Electronics',
+      selectCategory:'',
+      superCategory:'',
+      subCategory:'',
+      Category:''
     };
   }
 
@@ -28,7 +31,11 @@ class Category extends React.Component {
           </View>
           <View style={styles.PickerView}>
             <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => {
+                this.setState({
+                  selectCategory:value
+                })
+              }}
               useNativeAndroidPickerStyle
               items={[
                 {label: 'Electronics', value: 'electronics'},
@@ -40,12 +47,16 @@ class Category extends React.Component {
         </View>
 
         <View style={{flexDirection: 'row'}}>
-          <View style={{marginTop:20, marginLeft: 30}}>
+          <View style={styles.TextView}>
             <Text style={styles.Text}>Super Category</Text>
           </View>
           <View style={styles.secondaryPickerView}>
           <RNPickerSelect
-              onValueChange={value => console.log(value)}
+             onValueChange={value => {
+              this.setState({
+                superCategory:value
+              })
+            }}
               items={[
                 {label: 'Football', value: 'football'},
                 {label: 'Baseball', value: 'baseball'},
@@ -56,12 +67,16 @@ class Category extends React.Component {
         </View>
 
         <View style={{flexDirection: 'row'}}>
-          <View style={{marginTop:20, marginLeft: 30}}>
-            <Text style={styles.Text}>Super Category</Text>
+          <View style={styles.TextView}>
+            <Text style={styles.Text}>Sub Category</Text>
           </View>
-          <View style={styles.secondaryPickerView}>
+          <View style={{marginTop:55,marginLeft:55}}>
           <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => {
+                this.setState({
+                  subCategory:value
+                })
+              }}
               items={[
                 {label: 'Football', value: 'football'},
                 {label: 'Baseball', value: 'baseball'},
@@ -72,12 +87,16 @@ class Category extends React.Component {
         </View>
 
         <View style={{flexDirection: 'row'}}>
-          <View style={{marginTop:20, marginLeft: 30}}>
-            <Text style={{fontSize: 20, marginTop: 30}}>Super Category</Text>
+          <View style={styles.TextView}>
+            <Text style={styles.Text}>Category</Text>
           </View>
-          <View style={styles.secondaryPickerView}>
+          <View style={{marginTop:55,marginLeft:95 }}>
           <RNPickerSelect
-              onValueChange={value => console.log(value)}
+              onValueChange={value => {
+                this.setState({
+                  Category:value
+                })
+              }}
               items={[
                 {label: 'Football', value: 'football'},
                 {label: 'Baseball', value: 'baseball'},
@@ -108,9 +127,10 @@ class Category extends React.Component {
   }
 }
 const styles=StyleSheet.create({
-  container:{flex:1,marginTop:50},
+  container:{flex:1,backgroundColor:"white"},
   Text:{fontSize: 20, marginTop: 30},
   PickerView:{marginLeft: 40, marginTop: 35},
-  secondaryPickerView:{marginLeft: 40, marginTop: 55}
+  secondaryPickerView:{marginLeft: 40, marginTop: 55},
+  TextView:{marginTop:20, marginLeft: 30}
 })
 export default Category;

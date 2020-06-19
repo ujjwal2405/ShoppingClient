@@ -13,12 +13,16 @@ class prodBasics extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: 'java',
+     productName:'',
+     productDescription:'',
+     Mrp:0,
+     salesPrice:0,
+     Discount:0
     };
   }
 
   render() {
-    console.log(data.name);
+    console.log(data.name,this.state.productName);
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.prodBasicsTextView}>
@@ -33,7 +37,7 @@ class prodBasics extends React.Component {
             <TextInput
               style={{paddingHorizontal: 25}}
               autoCapitalize="none"
-              //   onChangeText={txt => this.setState({username: txt})}
+                onChangeText={txt => this.setState({productName: txt})}
             />
           </View>
         </View>
@@ -48,7 +52,7 @@ class prodBasics extends React.Component {
               multiline
               style={{padding: 25}}
               autoCapitalize="none"
-              //   onChangeText={txt => this.setState({username: txt})}
+                onChangeText={txt => this.setState({productDescription: txt})}
             />
           </View>
         </View>
@@ -62,7 +66,7 @@ class prodBasics extends React.Component {
             <TextInput
               style={{padding: 10}}
               autoCapitalize="none"
-              //   onChangeText={txt => this.setState({username: txt})}
+               onChangeText={txt => this.setState({Mrp: txt})}
             />
           </View>
         </View>
@@ -76,7 +80,7 @@ class prodBasics extends React.Component {
             <TextInput
               style={{padding: 10}}
               autoCapitalize="none"
-              //   onChangeText={txt => this.setState({username: txt})}
+               onChangeText={txt => this.setState({salesPrice: txt})}
             />
           </View>
         </View>
@@ -90,7 +94,7 @@ class prodBasics extends React.Component {
             <TextInput
               style={{padding: 10}}
               autoCapitalize="none"
-              //   onChangeText={txt => this.setState({username: txt})}
+                 onChangeText={txt => this.setState({Discount: txt})}
             />
           </View>
         </View>
