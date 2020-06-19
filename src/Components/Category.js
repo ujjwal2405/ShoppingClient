@@ -9,7 +9,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import {Picker} from '@react-native-community/picker';
+// import {Picker} from '@react-native-community/picker';
+import RNPickerSelect from 'react-native-picker-select';
 class Category extends React.Component {
   constructor(props) {
     super(props);
@@ -20,80 +21,71 @@ class Category extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <View style={{flexDirection:"row"}}>
-          
-          <View style={{marginTop:90,marginLeft:30}}>
-          <Text style={{fontSize:15,marginTop:30}}>Select Category</Text>
+      <SafeAreaView style={styles.container}>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{marginLeft: 30}}>
+            <Text style={styles.Text}>Select Category</Text>
           </View>
-          <View style={{marginLeft:40}}>
-          <Picker
-            selectedValue={this.state.product}
-            style={{height:50, width: 100}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({product: itemValue})
-            }>
-            <Picker.Item label="Electronics" value="Electronics" />
-            <Picker.Item label="Gupta" value="js" />
-          </Picker>
-          </View>
-        </View>
-
-
-        <View style={{flexDirection:"row"}}>
-          
-          <View style={{marginTop:90,marginLeft:30}}>
-          <Text style={{fontSize:15,marginTop:30}}>Super Category</Text>
-          </View>
-          <View style={{marginLeft:40}}>
-          <Picker
-            selectedValue={this.state.product}
-            style={{height:50, width: 100}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({product: itemValue})
-            }>
-            <Picker.Item label="Electronics" value="Electronics" />
-            <Picker.Item label="Gupta" value="js" />
-          </Picker>
+          <View style={styles.PickerView}>
+            <RNPickerSelect
+              onValueChange={value => console.log(value)}
+              useNativeAndroidPickerStyle
+              items={[
+                {label: 'Electronics', value: 'electronics'},
+                {label: 'Furniture', value: 'furniture'},
+                {label: 'Clothing', value: 'clothing'},
+              ]}
+            />
           </View>
         </View>
 
-        <View style={{flexDirection:"row"}}>
-          
-          <View style={{marginTop:90,marginLeft:30}}>
-          <Text style={{fontSize:15,marginTop:30}}>Sub Category</Text>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{marginTop:20, marginLeft: 30}}>
+            <Text style={styles.Text}>Super Category</Text>
           </View>
-          <View style={{marginLeft:60}}>
-          <Picker
-            selectedValue={this.state.product}
-            style={{height:50, width: 100}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({product: itemValue})
-            }>
-            <Picker.Item label="Electronics" value="Electronics" />
-            <Picker.Item label="Gupta" value="js" />
-          </Picker>
+          <View style={styles.secondaryPickerView}>
+          <RNPickerSelect
+              onValueChange={value => console.log(value)}
+              items={[
+                {label: 'Football', value: 'football'},
+                {label: 'Baseball', value: 'baseball'},
+                {label: 'Hockey', value: 'hockey'},
+              ]}
+            />
           </View>
         </View>
 
-        <View style={{flexDirection:"row"}}>
-          
-          <View style={{marginTop:90,marginLeft:30}}>
-          <Text style={{fontSize:15,marginTop:30}}> Category</Text>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{marginTop:20, marginLeft: 30}}>
+            <Text style={styles.Text}>Super Category</Text>
           </View>
-          <View style={{marginLeft:90}}>
-          <Picker
-            selectedValue={this.state.product}
-            style={{height:50, width: 100}}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({product: itemValue})
-            }>
-            <Picker.Item label="Electronics" value="Electronics" />
-            <Picker.Item label="Gupta" value="js" />
-          </Picker>
+          <View style={styles.secondaryPickerView}>
+          <RNPickerSelect
+              onValueChange={value => console.log(value)}
+              items={[
+                {label: 'Football', value: 'football'},
+                {label: 'Baseball', value: 'baseball'},
+                {label: 'Hockey', value: 'hockey'},
+              ]}
+            />
           </View>
         </View>
 
+        <View style={{flexDirection: 'row'}}>
+          <View style={{marginTop:20, marginLeft: 30}}>
+            <Text style={{fontSize: 20, marginTop: 30}}>Super Category</Text>
+          </View>
+          <View style={styles.secondaryPickerView}>
+          <RNPickerSelect
+              onValueChange={value => console.log(value)}
+              items={[
+                {label: 'Football', value: 'football'},
+                {label: 'Baseball', value: 'baseball'},
+                {label: 'Hockey', value: 'hockey'},
+              ]}
+            />
+          </View>
+        </View>
 
         <TouchableOpacity
           onPress={() => {
@@ -111,12 +103,14 @@ class Category extends React.Component {
             <Text style={{color: 'white'}}>Next Page</Text>
           </View>
         </TouchableOpacity>
-
-
-
-
       </SafeAreaView>
     );
   }
 }
+const styles=StyleSheet.create({
+  container:{flex:1,marginTop:50},
+  Text:{fontSize: 20, marginTop: 30},
+  PickerView:{marginLeft: 40, marginTop: 35},
+  secondaryPickerView:{marginLeft: 40, marginTop: 55}
+})
 export default Category;

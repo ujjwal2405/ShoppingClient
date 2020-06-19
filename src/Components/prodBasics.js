@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import data from '../Assets/data.json';
@@ -17,26 +18,18 @@ class prodBasics extends React.Component {
   }
 
   render() {
+    console.log(data.name);
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{marginLeft: 40, marginTop: 50, alignItems: 'center'}}>
-          <Text style={{color: 'red', fontSize: 35, fontWeight: '500'}}>
-            Product Basics
-          </Text>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.prodBasicsTextView}>
+          <Text style={styles.prodBasicsText}>Product Basics</Text>
         </View>
-        <View style={{flexDirection: 'row', marginLeft: 40, marginTop: 20}}>
-          <View style={{marginTop: 20}}>
+        <View style={styles.productNameParent}>
+          <View style={styles.marginTop}>
             <Text style={{fontWeight: 'bold'}}>Product {'\n'}Name </Text>
           </View>
 
-          <View
-            style={{
-              marginLeft: 20,
-              marginTop: 15,
-              borderColor: 'grey',
-              borderWidth: 1,
-              width: '50%',
-            }}>
+          <View style={styles.textInputView}>
             <TextInput
               style={{paddingHorizontal: 25}}
               autoCapitalize="none"
@@ -45,19 +38,12 @@ class prodBasics extends React.Component {
           </View>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 40, marginTop: 20}}>
-          <View style={{marginTop: 20}}>
+        <View style={styles.prodDescriptionView}>
+          <View style={styles.marginTop}>
             <Text style={{fontWeight: 'bold'}}>Product {'\n'}Description </Text>
           </View>
 
-          <View
-            style={{
-              marginLeft: 5,
-              marginTop: 15,
-              borderColor: 'grey',
-              borderWidth: 1,
-              width: '50%',
-            }}>
+          <View style={styles.mrpParentView}>
             <TextInput
               multiline
               style={{padding: 25}}
@@ -67,63 +53,42 @@ class prodBasics extends React.Component {
           </View>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 40, marginTop: 20}}>
-          <View style={{marginTop: 20}}>
+        <View style={styles.mrpTextView}>
+          <View style={styles.marginTop}>
             <Text style={{fontWeight: 'bold'}}>MRP </Text>
           </View>
 
-          <View
-            style={{
-              marginLeft: 50,
-              marginTop: 15,
-              borderColor: 'grey',
-              borderWidth: 1,
-              width: '50%',
-            }}>
+          <View style={styles.salesPriceParent}>
             <TextInput
-              style={{paddingHorizontal: 25}}
+              style={{padding: 10}}
               autoCapitalize="none"
               //   onChangeText={txt => this.setState({username: txt})}
             />
           </View>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 40, marginTop: 20}}>
+        <View style={styles.parentTextView}>
           <View style={{marginTop: 20}}>
             <Text style={{fontWeight: 'bold'}}>Sales Price </Text>
           </View>
 
-          <View
-            style={{
-              marginLeft: 5,
-              marginTop: 15,
-              borderColor: 'grey',
-              borderWidth: 1,
-              width: '50%',
-            }}>
+          <View style={styles.discountParent}>
             <TextInput
-              style={{paddingHorizontal: 25}}
+              style={{padding: 10}}
               autoCapitalize="none"
               //   onChangeText={txt => this.setState({username: txt})}
             />
           </View>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 40, marginTop: 20}}>
-          <View style={{marginTop: 20}}>
+        <View style={styles.discountTextView}>
+          <View style={styles.marginTop}>
             <Text style={{fontWeight: 'bold'}}>Discount </Text>
           </View>
 
-          <View
-            style={{
-              marginLeft: 20,
-              marginTop: 15,
-              borderColor: 'grey',
-              borderWidth: 1,
-              width: '50%',
-            }}>
+          <View style={styles.discountTextInputView}>
             <TextInput
-              style={{paddingHorizontal: 25}}
+              style={{padding: 10}}
               autoCapitalize="none"
               //   onChangeText={txt => this.setState({username: txt})}
             />
@@ -134,15 +99,7 @@ class prodBasics extends React.Component {
           onPress={() => {
             this.props.navigation.navigate('Product Image');
           }}>
-          <View
-            style={{
-              backgroundColor: 'black',
-              alignItems: 'center',
-              marginHorizontal: 60,
-              paddingVertical: 15,
-              marginTop: 25,
-              borderRadius: 100 / 2,
-            }}>
+          <View style={styles.buttonView}>
             <Text style={{color: 'white'}}>Next Page</Text>
           </View>
         </TouchableOpacity>
@@ -150,6 +107,98 @@ class prodBasics extends React.Component {
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  prodBasicsTextView: {
+    marginLeft: 40,
+    marginTop: 50,
+    alignItems: 'center',
+  },
+  prodBasicsText: {
+    color: 'red',
+    fontSize: 35,
+    fontWeight: '500',
+  },
+  productNameParent: {
+    flexDirection: 'row',
+    marginLeft: 40,
+    marginTop: 20,
+  },
+  marginTop: {
+    marginTop: 20,
+  },
+  textInputView: {
+    marginLeft: 20,
+    marginTop: 15,
+    borderColor: 'grey',
+    borderWidth: 1,
+    width: '50%',
+    marginLeft: 32,
+  },
+  prodDescriptionView: {
+    flexDirection: 'row',
+    marginLeft: 40,
+    marginTop: 20,
+  },
+  mrpParentView: {
+    marginLeft: 5,
+    marginTop: 15,
+    borderColor: 'grey',
+    borderWidth: 1,
+    width: '50%',
+    marginLeft: 8,
+  },
+  mrpTextView: {
+    flexDirection: 'row',
+    marginLeft: 40,
+    marginTop: 20,
+  },
+  salesPriceParent: {
+    marginLeft: 50,
+    marginTop: 15,
+    borderColor: 'grey',
+    borderWidth: 1,
+    width: '50%',
+    marginLeft: 58,
+  },
+  parentTextView: {
+    flexDirection: 'row',
+    marginLeft: 40,
+    marginTop: 20,
+  },
+  discountParent: {
+    marginLeft: 5,
+    marginTop: 15,
+    borderColor: 'grey',
+    borderWidth: 1,
+    width: '50%',
+    marginLeft: 15,
+  },
+  discountTextView: {
+    flexDirection: 'row',
+    marginLeft: 40,
+    marginTop: 20,
+  },
+  discountTextInputView: {
+    marginLeft: 20,
+    marginTop: 15,
+    borderColor: 'grey',
+    borderWidth: 1,
+    width: '50%',
+    marginLeft: 30,
+  },
+  buttonView: {
+    backgroundColor: 'black',
+    alignItems: 'center',
+    marginHorizontal: 60,
+    paddingVertical: 15,
+    marginTop: 25,
+    borderRadius: 100 / 2,
+  },
+});
+
 export default prodBasics;
 
 {
